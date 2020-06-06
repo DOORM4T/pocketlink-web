@@ -12,8 +12,9 @@ app.get("/:shortened", async (req, res) => {
     const shortened = req.params["shortened"];
     const snapshot = await linksDB.where("shortened", "==", shortened).get();
     let originalLink: string = snapshot.docs[0].data().original;
-    if (!originalLink.includes("http://"))
-      originalLink = "http://" + originalLink;
+    if (!originalLink.includes("http")) originalLink = "http://" + originalLink;
+    console.log(originalLink);
+
     res.redirect(originalLink);
   } catch (error) {
     console.error("\x1b[31m", error.message, "\x1b[0m");
