@@ -11,6 +11,7 @@ import Context from "./context";
 import "bulma/css/bulma.min.css";
 import "./styles/main.css";
 import "@fortawesome/fontawesome-svg-core";
+import "react-tooltip/dist/index";
 
 export default function App() {
   const [originalURL, setOriginalURL] = useState("");

@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import icon from "../assets/images/pocketlink.svg";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import Context from "../context";
 
 export default function Navbar() {
+  const history = useHistory();
+  const { customURL, originalURL, setCustomURL, setOriginalURL } = useContext(
+    Context,
+  );
+
+  const goHome = () => {
+    const isConfirmed = window.confirm(
+      "Returning to Home.\n This operation will clear your current progress.\n Do you wish to return home and clear your progress?",
+    );
+    if (!isConfirmed) return;
+    setCustomURL!(() => "");
+    setOriginalURL!(() => "");
+    history.push("/");
+  };
+
   return (
     <nav
       className="navbar is-dark"
@@ -12,7 +29,7 @@ export default function Navbar() {
       style={{ boxShadow: "0 2px 4px black" }}
     >
       <div className="navbar-brand">
-        <Link to="/" className="navbar-item">
+        <a className="navbar-item" onClick={goHome}>
           <motion.img
             src={icon}
             width="50"
@@ -21,7 +38,7 @@ export default function Navbar() {
             whileHover={{ scale: 1.7, rotateZ: "10deg" }}
             transition={{ type: "spring", velocity: 2 }}
           />
-        </Link>
+        </a>
       </div>
 
       <div className="navbar-menu">
