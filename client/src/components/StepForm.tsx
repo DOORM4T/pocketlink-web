@@ -12,7 +12,6 @@ export default function StepForm({ nextRoute, placeholder, onChange }: props) {
         action=""
         onSubmit={(e) => {
           e.preventDefault();
-          history.push(nextRoute);
         }}
       >
         <motion.input
@@ -21,7 +20,8 @@ export default function StepForm({ nextRoute, placeholder, onChange }: props) {
           name="link"
           placeholder={placeholder}
           onChange={onChange}
-          initial={{ scale: 1 }}
+          initial={{ x: 50 }}
+          animate={{ x: 0 }}
           whileTap={{ scale: 1.01 }}
         />
         <br />
@@ -30,6 +30,9 @@ export default function StepForm({ nextRoute, placeholder, onChange }: props) {
           type="submit"
           initial={{ scale: 1, filter: "brightness(100%)" }}
           whileTap={{ scale: 1.05, filter: "brightness(120%)" }}
+          onClick={() => {
+            history.push(nextRoute);
+          }}
         >
           Next
         </motion.button>

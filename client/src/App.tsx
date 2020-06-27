@@ -9,6 +9,8 @@ import Context from "./context";
 
 // styles
 import "bulma/css/bulma.min.css";
+import "./styles/main.css";
+import "@fortawesome/fontawesome-svg-core";
 
 export default function App() {
   const [originalURL, setOriginalURL] = useState("");
@@ -22,7 +24,7 @@ export default function App() {
         <Navbar />
         <section
           className="hero is-success is-large"
-          style={{ boxShadow: "0 -5px 20px black" }}
+          style={{ boxShadow: "0 -5px 20px black", height: "100vh" }}
         >
           <div className="hero-body has-text-centered">
             <motion.div className="container">

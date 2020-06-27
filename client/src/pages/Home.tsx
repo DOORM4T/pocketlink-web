@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import StepForm from "../components/StepForm";
 import Context from "../context";
+import isURL from "validator/lib/isURL";
 
 export default function Home() {
   const { originalURL, setOriginalURL } = useContext(Context);
