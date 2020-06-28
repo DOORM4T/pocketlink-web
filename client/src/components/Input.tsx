@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 
 export default function Input({
@@ -8,6 +8,12 @@ export default function Input({
   isWarning = false,
   warningMessage,
 }: props) {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef.current!.select();
+  }, []);
+
   return (
     <motion.input
       value={value}
@@ -21,6 +27,7 @@ export default function Input({
       whileTap={{ scale: 1.01 }}
       data-tip={warningMessage}
       data-tip-disable={!isWarning}
+      ref={inputRef}
     />
   );
 }

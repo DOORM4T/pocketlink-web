@@ -53,7 +53,7 @@ export default function App() {
             </motion.div>
           </div>
         </section>
-        <ReactToolTip effect="float" place="bottom" />
+        <ReactToolTip place="bottom" />
       </Router>
     </Context.Provider>
   );
