@@ -2,7 +2,9 @@ import express from "express";
 const app = express();
 import { functions, linksDB } from "./firebaseApp";
 
-app.use(express.static("build"));
+if (process.env.NODE_ENV === "development")
+  app.use(express.static("./dist/build"));
+else app.use(express.static("build"));
 
 app.get("/:shortened", async (req, res) => {
   try {
