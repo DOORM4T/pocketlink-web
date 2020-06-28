@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import Context from "../context";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
-import { BounceLoader, GridLoader } from "react-spinners";
+import { BounceLoader } from "react-spinners";
 import { functions } from "../firebase";
 import QRCode from "qrcode.react";
 import Button from "../components/Button";
@@ -86,8 +86,8 @@ export default function Completed() {
 
         <motion.div
           style={{ display: "grid", placeItems: "center" }}
-          initial={{ scale: "1" }}
-          animate={{ scale: "1.1" }}
+          initial={{ scale: 1 }}
+          animate={{ scale: 1.1 }}
         >
           <QRCode value={customURL} size={400} />
         </motion.div>
