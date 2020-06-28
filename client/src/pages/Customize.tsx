@@ -59,7 +59,7 @@ export default function Customize() {
       >
         <FA icon={faDiceD20} />
       </button>
-      <div data-tip="toggle format" data-delay-show={200} data-place="bottom">
+      <div data-tip="toggle format" data-effect="float">
         <Switch
           checked={usingMeaningful}
           onChange={handleToggleUsingMeaningful}
@@ -91,7 +91,6 @@ export default function Customize() {
           className="is-pulled-right mt-2 mr-2"
         />
       </div>
-      <ReactToolTip />
     </form>
   );
 }

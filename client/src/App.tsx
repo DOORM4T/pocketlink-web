@@ -6,6 +6,7 @@ import Completed from "./pages/Completed";
 import Navbar from "./components/Navbar";
 import { motion } from "framer-motion";
 import Context from "./context";
+import ReactToolTip from "react-tooltip";
 
 // styles
 import "bulma/css/bulma.min.css";
@@ -24,7 +25,7 @@ export default function App() {
       <Router>
         <Navbar />
         <section
-          className="hero is-success is-large"
+          className="has-background-success has-text-white"
           style={{ boxShadow: "0 -5px 20px black", height: "100vh" }}
         >
           <div className="hero-body has-text-centered">
@@ -33,7 +34,7 @@ export default function App() {
                 initial={{ scale: 0.8, textShadow: "0 1px 1px black" }}
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", damping: 12, velocity: 2 }}
-                className="title"
+                className="title has-text-white"
               >
                 PocketLink
               </motion.h1>
@@ -46,12 +47,13 @@ export default function App() {
                 <Customize />
               </Route>
               <Route path="/completed">
-                <Subtitle name="Completed" />
+                <Subtitle name="Here's your link:" />
                 <Completed />
               </Route>
             </motion.div>
           </div>
         </section>
+        <ReactToolTip effect="float" place="bottom" />
       </Router>
     </Context.Provider>
   );
@@ -60,7 +62,7 @@ export default function App() {
 function Subtitle({ name }: { name: string }) {
   return (
     <motion.h2
-      className="subtitle"
+      className="subtitle has-text-white"
       initial={{ y: -15, opacity: 0 }}
       animate={{ y: 0.8, opacity: 1 }}
       transition={{ delay: 0.2 }}

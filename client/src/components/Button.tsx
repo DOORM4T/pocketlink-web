@@ -6,12 +6,13 @@ export default function Button({
   position = "right",
   type = "button",
   children,
+  className,
 }: props) {
   return (
     <motion.button
       className={`button is-primary  mt-2 ${
         position === "right" ? "is-pulled-right" : ""
-      }`}
+      } ${className}`}
       type={type}
       initial={{ scale: 1, filter: "brightness(100%)" }}
       whileTap={{ scale: 1.05, filter: "brightness(120%)" }}
@@ -29,4 +30,5 @@ type props = {
   position?: "right" | "center";
   children?: React.ReactNode;
   type?: "button" | "submit";
+  className?: string;
 };

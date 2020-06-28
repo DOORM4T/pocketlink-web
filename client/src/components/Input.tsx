@@ -6,11 +6,12 @@ export default function Input({
   onChange,
   value,
   isWarning = false,
+  warningMessage,
 }: props) {
   return (
     <motion.input
       value={value}
-      className={`input mr-6 ${isWarning ? "is-danger" : ""}`}
+      className={`input is-large mr-6 ${isWarning ? "is-danger" : ""}`}
       type="text"
       name="link"
       placeholder={placeholder}
@@ -18,6 +19,8 @@ export default function Input({
       initial={{ x: 50 }}
       animate={{ x: 0 }}
       whileTap={{ scale: 1.01 }}
+      data-tip={warningMessage}
+      data-tip-disable={!isWarning}
     />
   );
 }
@@ -27,4 +30,5 @@ type props = {
   onChange?: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
   value: string;
   isWarning?: boolean;
+  warningMessage?: string;
 };

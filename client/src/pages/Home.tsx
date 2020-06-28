@@ -1,9 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef } from "react";
 import Input from "../components/Input";
 import Context from "../context";
 import Button from "../components/Button";
 import { useHistory } from "react-router-dom";
 import isURL from "validator/lib/isURL";
+import ReactToolTip from "react-tooltip";
 
 export default function Home() {
   const { originalURL, setOriginalURL } = useContext(Context);
@@ -26,7 +27,14 @@ export default function Home() {
           return;
         }
 
+        if (
+          !originalURL.includes("http://") &&
+          !originalURL.includes("https://")
+        )
+          setOriginalURL!(() => "http://" + originalURL);
+
         setHasError(() => false);
+        ReactToolTip.hide();
         history.push("/customize");
       }}
     >
@@ -35,6 +43,7 @@ export default function Home() {
         onChange={handleChange}
         value={originalURL}
         isWarning={hasError}
+        warningMessage="invalid URL"
       />
       <Button type="submit">Next</Button>
     </form>
