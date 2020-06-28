@@ -2,10 +2,7 @@ import express from "express";
 const app = express();
 import { functions, linksDB } from "./firebaseApp";
 
-app.get("/", (req, res) => {
-  console.log(functions);
-  res.send("Welcome to PocketLink Web App!");
-});
+app.use(express.static("build"));
 
 app.get("/:shortened", async (req, res) => {
   try {
